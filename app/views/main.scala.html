@@ -1,0 +1,24 @@
+@(title: String)(content: Html)
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>@title</title>
+    <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
+    <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
+  </head>
+  <body>
+    <div id="application">
+      @content
+    </div>
+    <script src="@routes.Assets.at("javascripts/react-with-addons-0.10.0.js")"></script>
+    <script src="@routes.Assets.at("javascripts/components/App.js")"></script>
+    <script>
+      React.renderComponent(
+        App(),
+        document.getElementById("application")
+      );
+    </script>
+  </body>
+</html>
