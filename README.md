@@ -62,7 +62,7 @@ pre-rendered HTML as opposed to an empty container.
 
 **The client:**
 
-```
+```html
 <div id="application">
   @content
 </div>
