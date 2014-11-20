@@ -3,7 +3,7 @@ React.js on the Play Framework
 
 * JDK8 shipped with a JavaScript runtime: [Nashorn](http://openjdk.java.net/projects/nashorn/)
 * React JS supports server side rendering via
-  [`React.renderComponentToString`](http://facebook.github.io/react/docs/top-level-api.html#react.rendercomponenttostring).
+  [`React.renderToString`](http://facebook.github.io/react/docs/top-level-api.html#react.rendertostring).
 * The [Play Framework](http://playframework.com/) is a web framework that runs
   on the JVM
 
