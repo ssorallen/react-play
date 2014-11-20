@@ -2,7 +2,7 @@ React.js on the Play Framework
 ==============================
 
 * JDK8 shipped with a JavaScript runtime: [Nashorn](http://openjdk.java.net/projects/nashorn/)
-* React JS supports server side rendering via
+* React supports server side rendering via
   [`React.renderToString`](http://facebook.github.io/react/docs/top-level-api.html#react.rendertostring).
 * The [Play Framework](http://playframework.com/) is a web framework that runs
   on the JVM
@@ -15,7 +15,7 @@ to render its templates on the server.
 1. Install [JDK8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) for your platform
 2. Clone this repository
 3. Follow the instructions to install and
-   [get started with Play 2.2+](http://playframework.com/documentation/2.2.x/Home)
+   [get started with Play 2.3.x](https://playframework.com/documentation/2.3.x/Home)
 4. Run the app with `play run`
 5. View [http://localhost:9000/](http://localhost:9000/) in your browser
 
