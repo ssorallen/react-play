@@ -4,7 +4,7 @@ import play.api._
 import play.api.mvc._
 
 import java.io.FileReader
-import javax.script.{ScriptEngine, ScriptEngineManager}
+import javax.script.ScriptEngineManager
 
 object Application extends Controller {
 
