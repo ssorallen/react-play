@@ -10,7 +10,7 @@ var NavigationItem = React.createClass({displayName: 'NavigationItem',
   },
   render: function() {
     return (
-      React.DOM.li( {onClick:this.onClick, className:this.props.selected ? "selected" : ""}, 
+      React.createElement("li", {onClick: this.onClick, className: this.props.selected ? "selected" : ""}, 
         this.props.item.data.display_name
       )
     );
@@ -18,7 +18,7 @@ var NavigationItem = React.createClass({displayName: 'NavigationItem',
 });
 
 var Navigation = React.createClass({displayName: 'Navigation',
-  setSelectedItem: function(item) {
+  itemSelected: function(item) {
     this.props.itemSelected(item);
   },
   render: function() {
@@ -29,18 +29,18 @@ var Navigation = React.createClass({displayName: 'Navigation',
       })
       .map(function(item) {
         return (
-          NavigationItem(
-            {item:item,
-            itemSelected:this.setSelectedItem,
-            key:item.data.id,
-            selected:item.data.url === this.props.activeUrl} )
+          React.createElement(NavigationItem, {
+            item: item, 
+            itemSelected: this.itemSelected, 
+            key: item.data.id, 
+            selected: item.data.url === this.props.activeUrl})
         );
       }, this);
 
     return (
-      React.DOM.div( {className:"navigation"}, 
-        React.DOM.div( {className:"header"}, "Navigation"),
-        React.DOM.ul(null, 
+      React.createElement("div", {className: "navigation"}, 
+        React.createElement("div", {className: "header"}, "Navigation"), 
+        React.createElement("ul", null, 
             items
         )
       )
@@ -52,18 +52,18 @@ var StoryList = React.createClass({displayName: 'StoryList',
   render: function() {
     var storyNodes = this.props.items.map(function(item) {
       return (
-        React.DOM.tr(null, 
-          React.DOM.td(null, 
-            React.DOM.p( {className:"score"}, item.data.score)
-          ),
-          React.DOM.td(null, 
-            React.DOM.p( {className:"title"}, 
-              React.DOM.a( {href:item.data.url}, 
+        React.createElement("tr", null, 
+          React.createElement("td", null, 
+            React.createElement("p", {className: "score"}, item.data.score)
+          ), 
+          React.createElement("td", null, 
+            React.createElement("p", {className: "title"}, 
+              React.createElement("a", {href: item.data.url}, 
                 item.data.title
               )
-            ),
-            React.DOM.p( {className:"author"}, 
-              "Posted by ", React.DOM.b(null, item.data.author)
+            ), 
+            React.createElement("p", {className: "author"}, 
+              "Posted by ", React.createElement("b", null, item.data.author)
             )
           )
         )
@@ -71,8 +71,8 @@ var StoryList = React.createClass({displayName: 'StoryList',
     });
 
     return (
-      React.DOM.table(null, 
-        React.DOM.tbody(null, 
+      React.createElement("table", null, 
+        React.createElement("tbody", null, 
           storyNodes
         )
       )
@@ -106,13 +106,13 @@ var App = React.createClass({displayName: 'App',
   },
   render: function() {
     return (
-      React.DOM.div(null, 
-        React.DOM.h1(null, this.state.title),
-        Navigation(
-          {activeUrl:this.state.activeNavigationUrl,
-          items:this.state.navigationItems,
-          itemSelected:this.setSelectedItem} ),
-        StoryList( {items:this.state.storyItems} )
+      React.createElement("div", null, 
+        React.createElement("h1", null, this.state.title), 
+        React.createElement(Navigation, {
+          activeUrl: this.state.activeNavigationUrl, 
+          items: this.state.navigationItems, 
+          itemSelected: this.setSelectedItem}), 
+        React.createElement(StoryList, {items: this.state.storyItems})
       )
     );
   },

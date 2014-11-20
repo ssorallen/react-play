@@ -14,6 +14,7 @@ object Application extends Controller {
     //
     // See: https://github.com/playframework/playframework/issues/2532
     val engine = new ScriptEngineManager(null).getEngineByName("nashorn")
+
     if (engine == null) {
       BadRequest("Nashorn script engine not found. Are you using JDK 8?")
     } else {
@@ -22,11 +23,11 @@ object Application extends Controller {
       engine.eval("var global = this;")
 
       // Evaulate React and the application code.
-      engine.eval(new FileReader("public/javascripts/react-with-addons-0.10.0.js"))
+      engine.eval(new FileReader("public/javascripts/bower_components/react/react-with-addons.js"))
       engine.eval(new FileReader("public/javascripts/components/App.js"))
 
       Ok(views.html.main("React on Play") {
-        templates.Html(engine.eval("React.renderComponentToString(App());").toString)
+        play.twirl.api.Html(engine.eval("React.renderToString(React.createElement(App));").toString)
       })
     }
   }

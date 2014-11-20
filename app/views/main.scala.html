@@ -12,11 +12,11 @@
     <div id="application">
       @content
     </div>
-    <script src="@routes.Assets.at("javascripts/react-with-addons-0.10.0.js")"></script>
+    <script src="@routes.Assets.at("javascripts/bower_components/react/react-with-addons.min.js")"></script>
     <script src="@routes.Assets.at("javascripts/components/App.js")"></script>
     <script>
-      React.renderComponent(
-        App(),
+      React.render(
+        React.createElement(App, null),
         document.getElementById("application")
       );
     </script>
