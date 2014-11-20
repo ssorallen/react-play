@@ -52,7 +52,7 @@ var StoryList = React.createClass({displayName: 'StoryList',
   render: function() {
     var storyNodes = this.props.items.map(function(item) {
       return (
-        React.createElement("tr", null, 
+        React.createElement("tr", {key: item.data.id}, 
           React.createElement("td", null, 
             React.createElement("p", {className: "score"}, item.data.score)
           ), 
