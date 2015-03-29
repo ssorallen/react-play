@@ -23,7 +23,7 @@ object Application extends Controller {
       engine.eval("var global = this;")
 
       // Evaluate React and the application code.
-      engine.eval(new FileReader("public/javascripts/bower_components/react/react-with-addons.js"))
+      engine.eval(new FileReader("target/web/web-modules/main/webjars/lib/react/react-with-addons.js"))
       engine.eval(new FileReader("target/web/public/main/javascripts/components/App.js"))
 
       Ok(views.html.main("React on Play") {
