@@ -70,7 +70,7 @@ pre-rendered HTML as opposed to an empty container.
 <div id="application">
   @content
 </div>
-<script src="@routes.Assets.at("javascripts/bower_components/react/react-with-addons.min.js")"></script>
+<script src="@routes.WebJarAssets.at(WebJarAssets.locate("react-with-addons.min.js"))"></script>
 <script src="@routes.Assets.at("javascripts/components/App.js")"></script>
 <script>
   React.render(
