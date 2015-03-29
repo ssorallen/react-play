@@ -50,8 +50,8 @@ def index = Action {
     engine.eval("var global = this;")
 
     // Evaulate React and the application code.
-    engine.eval(new FileReader("public/javascripts/bower_components/react/react-with-addons.js"))
-    engine.eval(new FileReader("public/javascripts/components/App.js"))
+    engine.eval(new FileReader("target/web/web-modules/main/webjars/lib/react/react-with-addons.js"))
+    engine.eval(new FileReader("target/web/public/main/javascripts/components/App.js"))
 
     Ok(views.html.main("React on Play") {
       play.twirl.api.Html(engine.eval("React.renderToString(React.createElement(App));").toString)
