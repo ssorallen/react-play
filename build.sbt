@@ -7,5 +7,7 @@ lazy val root = (project in file(".")).enablePlugins(PlayScala)
 libraryDependencies ++= Seq(
   jdbc,
   anorm,
-  cache
-)     
+  cache,
+  "org.webjars" %% "webjars-play" % "2.3.0-2",
+  "org.webjars" % "react" % "0.13.0"
+)
