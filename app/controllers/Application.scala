@@ -19,8 +19,13 @@ object Application extends Controller {
       BadRequest("Nashorn script engine not found. Are you using JDK 8?")
     } else {
       // React expects `window` or `global` to exist. Create a `global` pointing
-      // to Nashorn's context to give React a place to define its global namespace.
+      // to Nashorn's context to give React a place to define its global
+      // namespace.
       engine.eval("var global = this;")
+
+      // Define `console.log`, etc. to send messages to Nashorn's global `print`
+      // function so the messages are written to standard out.
+      engine.eval("var console = {error: print, log: print, warn: print};")
 
       // Evaluate React and the application code.
       engine.eval(new FileReader("target/web/web-modules/main/webjars/lib/react/react-with-addons.js"))
