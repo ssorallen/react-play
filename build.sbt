@@ -9,5 +9,5 @@ libraryDependencies ++= Seq(
   anorm,
   cache,
   "org.webjars" %% "webjars-play" % "2.3.0-3",
-  "org.webjars" % "react" % "0.13.0"
+  "org.webjars" % "react" % "0.13.1"
 )
