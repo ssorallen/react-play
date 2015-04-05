@@ -9,9 +9,10 @@
     <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
   </head>
   <body>
-    <div id="application">
-      @content
-    </div>
+    @* The wrapper around the React mount point must contain no whitespace so
+     * output looks identical inside this element on server and browser. *@
+    <div id="application">@content</div>
+
     <script src="@routes.WebJarAssets.at(WebJarAssets.locate("react-with-addons.min.js"))"></script>
     <script src="@routes.Assets.at("javascripts/components/App.js")"></script>
     <script>
