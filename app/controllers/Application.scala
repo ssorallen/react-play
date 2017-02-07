@@ -1,12 +1,13 @@
 package controllers
 
-import play.api._
-import play.api.mvc._
-
-import java.io.FileReader
+import java.io.InputStreamReader
 import javax.script.ScriptEngineManager
 
-object Application extends Controller {
+import com.google.inject.Inject
+import play.api.Environment
+import play.api.mvc._
+
+class Application @Inject()(implicit webJarAssets: WebJarAssets, env: Environment) extends Controller {
 
   def index = Action {
     // Pass 'null' to force the correct class loader. Without passing any param,
@@ -28,10 +29,10 @@ object Application extends Controller {
       engine.eval("var console = {error: print, log: print, warn: print};")
 
       // Evaluate React and the application code.
-      engine.eval(new FileReader("target/web/web-modules/main/webjars/lib/react/react-with-addons.js"))
-      engine.eval(new FileReader("target/web/public/main/javascripts/components/App.js"))
+      engine.eval(new InputStreamReader(env.classLoader.getResource("public/lib/react/react-with-addons.js").openStream()))
+      engine.eval(new InputStreamReader(env.classLoader.getResource("public/javascripts/components/App.js").openStream()))
 
-      Ok(views.html.main("React on Play") {
+      Ok(views.html.main("React on Play", webJarAssets) {
         play.twirl.api.Html(engine.eval("React.renderToString(React.createElement(App));").toString)
       })
     }

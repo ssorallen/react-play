@@ -67,6 +67,6 @@ h1 {
  * Changed to a <b> because React wraps text nodes in
  * <span> elements if they have non-text-node siblings.
  */
- .author b {
+.author b {
   color: #afb3b9;
 }
