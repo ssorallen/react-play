@@ -10,3 +10,5 @@ addSbtPlugin("com.typesafe.play" % "sbt-plugin" % "2.5.3")
 
 // transform JSX assets
 addSbtPlugin("com.github.ddispaltro" % "sbt-reactjs" % "0.6.8")
+
+dependencyOverrides += "org.webjars.npm" % "minimatch" % "3.0.4"
